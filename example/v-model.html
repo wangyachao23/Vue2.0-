@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model双向数据源绑定实例</title>
+    <script type="text/javascript"  src="../assets/js/vue.js"></script>
+</head>
+<body>
+   <h1>v-model双向数据源绑定实例</h1>
+   <hr>
+   <div id="app">
+    <p>原始数据：{{message}}</p>
+    <h3>文本框</h3>
+    <p>v-model:<input type="text" name="" id="" v-model="message"></p>
+     <!-- .lazy 是在输入时文本不变，但是鼠标离开焦点是文本框才发生变化 -->
+    <p>v-model.lazy:<input type="text" name="" id="" v-model.lazy="message"></p>
+    <p>v-model.number:<input type="text" name="" id="" v-model.number="message"></p>
+    <!-- .trim去空格 -->
+    <p>v-model.trim:<input type="text" name="" id="" v-model.trim="message"></p>
+    <hr>
+    <h3>文本域</h3>
+    <textarea  cols="30" rows="10" v-model="message"></textarea>
+    <hr>
+   <h3>多选框绑定一个值</h3>
+    <input type="checkbox" id="idtrue" v-model="istrue">
+    <label for="istrue">{{istrue}}</label>
+    <hr>
+    <h3>多选框绑定数组</h3>
+    <p>
+            <input type="checkbox" id="jasmyn" value="jasmyn" v-model="web_names">
+            <label for="jasmyn">jasmyn</label>
+            <input type="checkbox" id="chaochao" value="chaochao" v-model="web_names">
+            <label for="chaochao">王亚超</label>
+            <input type="checkbox" id="chao" value="chao" v-model="web_names">
+            <label for="chao">小超</label>
+    </p>
+    <p>{{web_names}}</p>
+    <hr>
+    <p>单选框的绑定</p>
+    <p>
+        <input type="radio" id="man"  value="男" v-model="sex">
+        <label for="man">男</label>
+        <input type="radio" id="woman"  value="女" v-model="sex">
+        <label for="woman">女</label>
+        <p>你选择的性别是:{{sex}}</p>
+    </p>
+</div>
+   <script type="text/javascript">
+   var app=new Vue({
+       el:'#app',
+       data:{
+           message:'hello world',
+           istrue:true,
+           web_names:[],
+           sex:'男'
+       }
+   })
+   </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on实例</title>
+    <script type="text/javascript"  src="../assets/js/vue.js"></script>
+</head>
+<body>
+   <h1>v-on实例</h1>
+   <hr>
+   <div id="app">
+    本场比赛得分：{{mark}}
+    <p>
+        <button @click="jiafen" >加分</button><br>
+        <button @click="jianfen" >减分</button><br>
+        <label for="input">其他加减分：</label>
+        <input type="text" name="" id="input" @keyup.enter="onEnter" v-model="secondCount" placeholder="请输入其他加减分情况">
+    </p>
+
+   </div>
+   <script type="text/javascript">
+   var app=new Vue({
+       el:'#app',
+       data:{
+           mark:0
+       },
+       methods: {
+           jiafen:function(){
+               this.mark++;
+           },
+           jianfen:function(){
+               this.mark--;
+           },
+           onEnter:function(){
+               this.mark=this.mark+parseInt(this.secondCount);
+            //    parseInt进行数据转换
+           }
+       },
+   })
+   </script>
+</body>
+</html>

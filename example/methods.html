@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>methods</title>
+    <script type="text/javascript"  src="../assets/js/vue.js"></script>
+</head>
+<body>
+   <h1>methods</h1>
+   <hr>
+   <div id="app">
+    <p>{{a}}</p>
+    <button @click="add(6)">add</button>
+    <p><btn @click.native="add(3)"></btn></p>
+   </div>
+   <!-- 外部点击事件要用onclick -->
+   <button onclick="app.add(5)">外部ADD</button>
+   <script type="text/javascript">
+   var btn={
+       template:'<button>组建add</button>'
+   }
+   var app=new Vue({
+       el:'#app',
+       data:{
+          a:1
+       },
+       components:{
+           'btn':btn
+       },
+       methods: {
+        //    传值
+           add:function(num){
+               if(num!=''){
+                   this.a+=num;
+               }
+               else{this.a++;}
+               
+           }
+       },
+   })
+   </script>
+</body>
+</html>

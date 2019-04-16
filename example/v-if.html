@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HelloWorld</title>
+    <script type="text/javascript"  src="../assets/js/vue.js"></script>
+</head>
+<body>
+   <h1>v-if & v-else & v-show</h1>
+   <hr>
+   <div id="app">
+       <!-- 
+           v-if 判断是否加载html的DOM，可以减轻服务器压力，在需要时加载
+           v-show：调整css display属性，可以使用客户端操作更加流畅
+        -->
+    <div v-show="isLogin">您好，jasmyn!</div>
+    <!-- <div v-else>请登录</div> -->
+   </div>
+   <script type="text/javascript">
+   var app=new Vue({
+       el:'#app',
+       data:{
+          isLogin:true
+       }
+   })
+   </script>
+</body>
+</html>

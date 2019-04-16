@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component-2</title>
+    <script type="text/javascript"  src="../assets/js/vue.js"></script>
+</head>
+<body>
+   <h1>component-2</h1>
+   <hr>
+   <div id="app">
+    <panda :here="message"></panda>
+   </div>
+   <script type="text/javascript">
+   var app=new Vue({
+       el:'#app',
+       data:{
+           message:'China'
+       },
+       components:{
+           "panda":{
+            template:`
+            // 小驼峰：当有‘-’时，可以将‘-’后的第一个字母大写
+            // 大驼峰：每个单词都首字母大写
+        <div style="color:green;">Panda from {{ here }}.</div>`,
+        // 挂载
+        props:['here']
+        
+           }
+       }
+   });
+   </script>
+</body>
+</html>

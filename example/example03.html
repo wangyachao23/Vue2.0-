@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example03 实例事件</title>
+    <script type="text/javascript"  src="../assets/js/vue.js"></script>
+</head>
+<body>
+   <h1>example03 实例事件</h1>
+   <hr>
+   <div id="app">
+    <p>{{num}}</p>
+    <button @click="add">add</button>
+   </div>
+   <!-- 外部调用需要加括号 -->
+  <p><button onclick="reduce()">reduce</button></p> 
+  <p><button onclick="reduceoce()">reduceonce</button></p> 
+  <p><button onclick="off()">offreduce</button></p> 
+   <script type="text/javascript">
+   var app=new Vue({
+       el:'#app',
+       data:{
+           num:1
+       },
+       methods: {
+           add:function(){
+             this.num++;  
+           }
+     },
+   })
+   app.$on("reduce",function(){
+       console.log("执行了reduce方法");
+       this.num--;
+   })
+   app.$once('reduceoce',function(){
+       console.log('只执行一次的方法');
+       this.num--;
+   })
+   function reduce(){
+       app.$emit('reduce');
+   }
+   function reduceoce(){
+       app.$emit('reduceoce');
+   }
+   //关闭事件
+function off(){
+   app.$off('reduce');
+}
+
+   </script>
+</body>
+</html>

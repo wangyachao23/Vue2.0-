@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed</title>
+    <script type="text/javascript"  src="../assets/js/vue.js"></script>
+</head>
+<body>
+   <h1>computed</h1>
+   <hr>
+   <div id="app">
+    
+    <p>{{newPrice}}</p>
+    <ul>
+        <li v-for="item in reversNews">{{item.title}}&nbsp;&nbsp;{{item.data}}</li>
+    </ul>
+   </div>
+   <script type="text/javascript">
+   var newsList=[
+       {title:'巴黎圣母院着火',data:'2019-04-16'},
+       {title:'杨李出轨',data:'2019-04-14'},
+       {title:'郑秀文',data:'2019-04-14'},
+       {title:'舔屏党的春天',data:'2019-04-13'},     
+   ]
+   var app=new Vue({
+       el:'#app',
+       data:{
+           price:100,
+           newsList:newsList
+       },
+       computed: {
+           newPrice:function(){
+               return this.price="￥"+this.price+'元';
+           },
+           reversNews:function(){
+            return this.newsList.reverse();
+           }
+       },
+   })
+   </script>
+</body>
+</html>

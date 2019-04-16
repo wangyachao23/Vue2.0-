@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example Mounted Demo</title>
+    <script type="text/javascript"  src="../assets/js/vue.js"></script>
+</head>
+<body>
+   <h1>example Mounted Demo</h1>
+   <hr>
+   <div id="app"></div>
+   <p><button onclick="destroy()">卸载</button></p>
+   <p><button onclick="reload()">刷新</button></p>
+   <p><button onclick="tick()">更改数据</button></p>
+   <script type="text/javascript">
+    var jasmyn=Vue.extend({
+        template:`<p>{{message}}</p>`,
+        data:function(){
+            return {
+                message:'hello'
+            }
+        },
+        mounted:function(){
+            console.log('mounted 被创建')
+        },
+        destroyed:function(){
+            console.log('destory 销毁之后')
+        },
+        updated:function(){
+            console.log('刷新之后')
+        },
+    })
+    var vm=new jasmyn().$mount("#app");
+    function destroy() {
+        vm.$destroy();
+    }
+    function reload(){
+        vm.$forceUpdate();
+    }
+    // 当Vue构造器里的data值被修改完成后会调用这个方法，也相当于一个钩子函数吧，和构造器里的updated生命周期很像。
+    function tick(){
+    vm.message="update message info ";
+    vm.$nextTick(function(){
+        console.log('message更新完后我被调用了');
+    })
+}
+   </script>
+</body>
+</html>
